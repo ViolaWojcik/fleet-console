@@ -19,7 +19,8 @@ function medianText(t: Turbine, medianDays: number): { text: string; late: boole
 function DataCell({ value, unit, align = 'end', digits = 0 }:
   { value: number | null | undefined; unit?: string; align?: 'start' | 'end'; digits?: number }) {
   if (value === null || value === undefined) return <td className="cell cell--missing"><SignalState state="missing" /></td>
-  return <td className={`cell cell--${align}`}>{value.toLocaleString('en-GB', { maximumFractionDigits: digits, minimumFractionDigits: digits }).replace(/,/g, ' ')}{unit}</td>
+  const rounded = Number(value.toFixed(digits)) || 0   // never print "-0"
+  return <td className={`cell cell--${align}`}>{rounded.toLocaleString('en-GB', { maximumFractionDigits: digits, minimumFractionDigits: digits }).replace(/,/g, ' ')}{unit}</td>
 }
 
 /** Fleet / table: the same row component (FleetRow) at any density, sorted by severity. */
