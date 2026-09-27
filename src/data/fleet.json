@@ -1,0 +1,1901 @@
+{
+ "clock": "2023-02-10T12:00:00Z",
+ "windowDays": 42,
+ "base": {
+  "episodes": 51,
+  "outages": 22,
+  "turbines": 11,
+  "medianDays": 21,
+  "since": "2016"
+ },
+ "scoring": "confidence = 0.06 + 0.11 per day with a particle alarm (max five days) + 0.09 if alarms on two or more days (the counted pattern) + 0.05 if another drivetrain stop is in the window - 0.07 if a service visit was within 14 days - 0.12 if the particle sensor reported its own defect. Severity: stop = a drivetrain outage or on-site stop open in the last 3 days; act = alarms on three or more days; watch = one or two; clear = none.",
+ "source": "Cubico Sustainable Investments, Kelmarsh and Penmanshiel SCADA event logs, CC-BY-4.0 (Zenodo 16807551, 16807304)",
+ "turbines": [
+  {
+   "id": "PEN-15",
+   "farm": "Penmanshiel",
+   "unit": "15",
+   "model": "Senvion MM82 \u00b7 2.05 MW",
+   "severity": "stop",
+   "confidence": 0.56,
+   "flagDay": -52.07,
+   "sinceDays": 52,
+   "confidenceAtFlag": 0.17,
+   "alarmDays": 10,
+   "replayedFrom": "2024-04-18",
+   "signal": "suspect",
+   "marks": [
+    {
+     "kind": "service",
+     "day": -36.12,
+     "hours": 0.03,
+     "message": "Manual stop - on site"
+    },
+    {
+     "kind": "alarm",
+     "day": -36.0,
+     "hours": 0.26666666666666666,
+     "message": "Particle Gear Alarm 24h"
+    },
+    {
+     "kind": "outage",
+     "day": -36.0,
+     "hours": 0.27,
+     "message": "Particle Gear Alarm 24h"
+    },
+    {
+     "kind": "alarm",
+     "day": -26.8,
+     "hours": 0.18333333333333332,
+     "message": "Particle Gear Alarm 24h"
+    },
+    {
+     "kind": "outage",
+     "day": -26.8,
+     "hours": 0.18,
+     "message": "Particle Gear Alarm 24h"
+    },
+    {
+     "kind": "alarm",
+     "day": -25.67,
+     "hours": 0.06666666666666667,
+     "message": "Particle Gear Alarm 24h"
+    },
+    {
+     "kind": "outage",
+     "day": -25.67,
+     "hours": 0.07,
+     "message": "Particle Gear Alarm 24h"
+    },
+    {
+     "kind": "alarm",
+     "day": -15.6,
+     "hours": 0.06666666666666667,
+     "message": "Particle Gear Alarm 10min"
+    },
+    {
+     "kind": "alarm",
+     "day": -14.6,
+     "hours": 0.1,
+     "message": "Particle Gear Alarm 10min"
+    },
+    {
+     "kind": "alarm",
+     "day": -14.59,
+     "hours": 0.08333333333333333,
+     "message": "Particle Gear Alarm 10min"
+    },
+    {
+     "kind": "alarm",
+     "day": -14.54,
+     "hours": 0.2833333333333333,
+     "message": "Particle Gear Alarm 24h"
+    },
+    {
+     "kind": "outage",
+     "day": -14.54,
+     "hours": 0.28,
+     "message": "Particle Gear Alarm 24h"
+    },
+    {
+     "kind": "alarm",
+     "day": -12.63,
+     "hours": 0.25,
+     "message": "Particle Gear Alarm 10min"
+    },
+    {
+     "kind": "outage",
+     "day": -12.63,
+     "hours": 0.25,
+     "message": "Repeating error BP52"
+    },
+    {
+     "kind": "alarm",
+     "day": -12.61,
+     "hours": 0.1,
+     "message": "Particle Gear Alarm 10min"
+    },
+    {
+     "kind": "alarm",
+     "day": -11.94,
+     "hours": 0.16666666666666666,
+     "message": "Particle Gear Alarm 10min"
+    },
+    {
+     "kind": "alarm",
+     "day": -11.94,
+     "hours": 0.31666666666666665,
+     "message": "Particle Gear Alarm 24h"
+    },
+    {
+     "kind": "outage",
+     "day": -11.94,
+     "hours": 0.32,
+     "message": "Particle Gear Alarm 24h"
+    },
+    {
+     "kind": "alarm",
+     "day": -11.77,
+     "hours": 0.05,
+     "message": "Particle Gear Alarm 10min"
+    },
+    {
+     "kind": "alarm",
+     "day": -10.9,
+     "hours": 0.31666666666666665,
+     "message": "Particle Gear Alarm 24h"
+    },
+    {
+     "kind": "outage",
+     "day": -10.9,
+     "hours": 0.32,
+     "message": "Particle Gear Alarm 24h"
+    },
+    {
+     "kind": "service",
+     "day": -9.19,
+     "hours": 6.72,
+     "message": "Manual stop - on site"
+    },
+    {
+     "kind": "alarm",
+     "day": -4.74,
+     "hours": 0.31666666666666665,
+     "message": "Particle Gear Alarm 24h"
+    },
+    {
+     "kind": "outage",
+     "day": -4.74,
+     "hours": 0.32,
+     "message": "Particle Gear Alarm 24h"
+    },
+    {
+     "kind": "alarm",
+     "day": -4.72,
+     "hours": 0.03333333333333333,
+     "message": "Particle Gear Alarm 10min"
+    },
+    {
+     "kind": "alarm",
+     "day": -2.63,
+     "hours": 0.1,
+     "message": "Particle Gear Alarm 24h"
+    },
+    {
+     "kind": "outage",
+     "day": -2.63,
+     "hours": 0.1,
+     "message": "Particle Gear Alarm 24h"
+    },
+    {
+     "kind": "service",
+     "day": -2.05,
+     "hours": 141.0,
+     "message": "Manual stop - on site"
+    },
+    {
+     "kind": "outage",
+     "day": -1.17,
+     "hours": 48.0,
+     "message": "Safety chain open"
+    },
+    {
+     "kind": "note",
+     "day": -0.08,
+     "hours": 73.63,
+     "message": "PT100 inlet gear defect",
+     "label": "sensor suspect"
+    },
+    {
+     "kind": "note",
+     "day": -0.08,
+     "hours": 73.6,
+     "message": "Particle sensor defect",
+     "label": "sensor suspect"
+    }
+   ],
+   "evidence": [
+    {
+     "direction": "raises",
+     "weight": 0.55,
+     "label": "Particle alarms on 10 days",
+     "source": "oil particle sensor",
+     "freshness": "live",
+     "staleDays": 2
+    },
+    {
+     "direction": "raises",
+     "weight": 0.09,
+     "label": "Same pattern in 22 of 51 episodes",
+     "source": "fleet history",
+     "freshness": "counted"
+    },
+    {
+     "direction": "raises",
+     "weight": 0.05,
+     "label": "Repeating error BP52 stop 12 d ago",
+     "source": "turbine controller",
+     "freshness": "live"
+    },
+    {
+     "direction": "lowers",
+     "weight": -0.07,
+     "label": "Service visit 2 d ago",
+     "source": "service log",
+     "freshness": "stale",
+     "staleDays": 2
+    },
+    {
+     "direction": "lowers",
+     "weight": -0.12,
+     "label": "Particle sensor defect logged today",
+     "source": "sensor self-test",
+     "freshness": "live"
+    }
+   ],
+   "today": {
+    "lines": 5,
+    "alarms": 0,
+    "items": [
+     {
+      "time": "11:51",
+      "status": "Warning",
+      "message": "4-20mA anemometer 1",
+      "hours": 69.12,
+      "kind": "routine"
+     },
+     {
+      "time": "11:51",
+      "status": "Warning",
+      "message": "4-20 mA vane 2",
+      "hours": 69.13,
+      "kind": "routine"
+     },
+     {
+      "time": "11:51",
+      "status": "Warning",
+      "message": "4-20mA anemometer 2",
+      "hours": 69.13,
+      "kind": "routine"
+     },
+     {
+      "time": "09:58",
+      "status": "Warning",
+      "message": "Particle sensor defect",
+      "hours": 73.6,
+      "kind": "routine"
+     },
+     {
+      "time": "09:57",
+      "status": "Warning",
+      "message": "PT100 inlet gear defect",
+      "hours": 73.63,
+      "kind": "routine"
+     }
+    ],
+    "routine": 0,
+    "routineKinds": []
+   },
+   "eventsInWindow": 747
+  },
+  {
+   "id": "KEL-04",
+   "farm": "Kelmarsh",
+   "unit": "4",
+   "model": "Senvion MM92 \u00b7 2.05 MW",
+   "severity": "act",
+   "confidence": 0.7,
+   "flagDay": -30.99,
+   "sinceDays": 31,
+   "confidenceAtFlag": 0.17,
+   "alarmDays": 5,
+   "replayedFrom": null,
+   "signal": "live",
+   "marks": [
+    {
+     "kind": "alarm",
+     "day": -30.99,
+     "hours": 0.08333333333333333,
+     "message": "Particle Gear Alarm 10min"
+    },
+    {
+     "kind": "alarm",
+     "day": -15.22,
+     "hours": 0.03333333333333333,
+     "message": "Particle Gear Alarm 10min"
+    },
+    {
+     "kind": "alarm",
+     "day": -9.08,
+     "hours": 0.08333333333333333,
+     "message": "Particle Gear Alarm 10min"
+    },
+    {
+     "kind": "alarm",
+     "day": -5.38,
+     "hours": 0.03333333333333333,
+     "message": "Particle Gear Alarm 10min"
+    },
+    {
+     "kind": "alarm",
+     "day": -0.13,
+     "hours": 0.05,
+     "message": "Particle Gear Alarm 10min"
+    }
+   ],
+   "evidence": [
+    {
+     "direction": "raises",
+     "weight": 0.55,
+     "label": "Particle alarms on 5 days",
+     "source": "oil particle sensor",
+     "freshness": "live",
+     "staleDays": 0
+    },
+    {
+     "direction": "raises",
+     "weight": 0.09,
+     "label": "Same pattern in 22 of 51 episodes",
+     "source": "fleet history",
+     "freshness": "counted"
+    }
+   ],
+   "today": {
+    "lines": 18,
+    "alarms": 1,
+    "items": [
+     {
+      "time": "08:58",
+      "status": "Warning",
+      "message": "Particle Gear Alarm 10min",
+      "hours": 0.05,
+      "kind": "alarm"
+     },
+     {
+      "time": "18:41",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "18:41",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "17:39",
+      "status": "Informational",
+      "message": "Brake program 50",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "16:40",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "16:40",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "16:28",
+      "status": "Informational",
+      "message": "Brake program 50",
+      "hours": 0.0,
+      "kind": "routine"
+     }
+    ],
+    "routine": 11,
+    "routineKinds": [
+     "Automatic start-up",
+     "Mains connection",
+     "Run-up",
+     "System OK",
+     "Wind < start wind"
+    ]
+   },
+   "eventsInWindow": 410
+  },
+  {
+   "id": "PEN-07",
+   "farm": "Penmanshiel",
+   "unit": "07",
+   "model": "Senvion MM82 \u00b7 2.05 MW",
+   "severity": "watch",
+   "confidence": 0.15,
+   "flagDay": -0.93,
+   "sinceDays": 1,
+   "confidenceAtFlag": 0.17,
+   "alarmDays": 1,
+   "replayedFrom": null,
+   "signal": "live",
+   "marks": [
+    {
+     "kind": "service",
+     "day": -8.97,
+     "hours": 1.45,
+     "message": "Manual stop - on site"
+    },
+    {
+     "kind": "outage",
+     "day": -7.41,
+     "hours": 0.35,
+     "message": "Low gearbox oil pressure"
+    },
+    {
+     "kind": "service",
+     "day": -0.94,
+     "hours": 0.0,
+     "message": "Manual stop - on site"
+    },
+    {
+     "kind": "alarm",
+     "day": -0.93,
+     "hours": 0.06666666666666667,
+     "message": "Particle Gear Alarm 10min"
+    }
+   ],
+   "evidence": [
+    {
+     "direction": "raises",
+     "weight": 0.11,
+     "label": "Particle alarms on 1 day",
+     "source": "oil particle sensor",
+     "freshness": "live",
+     "staleDays": 0
+    },
+    {
+     "direction": "raises",
+     "weight": 0.05,
+     "label": "Low gearbox oil pressure stop 7 d ago",
+     "source": "turbine controller",
+     "freshness": "live"
+    },
+    {
+     "direction": "lowers",
+     "weight": -0.07,
+     "label": "Service visit 0 d ago",
+     "source": "service log",
+     "freshness": "stale",
+     "staleDays": 0
+    }
+   ],
+   "today": {
+    "lines": 62,
+    "alarms": 1,
+    "items": [
+     {
+      "time": "03:48",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "03:47",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "03:33",
+      "status": "Informational",
+      "message": "Brake program 50",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "03:04",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "03:03",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "02:57",
+      "status": "Informational",
+      "message": "Brake program 50",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "02:43",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "02:42",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     }
+    ],
+    "routine": 32,
+    "routineKinds": [
+     "Automatic start-up",
+     "Mains connection",
+     "Run-up",
+     "System OK",
+     "Wind < start wind"
+    ]
+   },
+   "eventsInWindow": 418
+  },
+  {
+   "id": "KEL-01",
+   "farm": "Kelmarsh",
+   "unit": "1",
+   "model": "Senvion MM92 \u00b7 2.05 MW",
+   "severity": "clear",
+   "confidence": 0.06,
+   "flagDay": null,
+   "sinceDays": null,
+   "confidenceAtFlag": null,
+   "alarmDays": 0,
+   "replayedFrom": null,
+   "signal": "live",
+   "marks": [],
+   "evidence": [],
+   "today": {
+    "lines": 8,
+    "alarms": 0,
+    "items": [
+     {
+      "time": "14:37",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "14:36",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "14:31",
+      "status": "Informational",
+      "message": "Brake program 50",
+      "hours": 0.0,
+      "kind": "routine"
+     }
+    ],
+    "routine": 5,
+    "routineKinds": [
+     "Automatic start-up",
+     "Mains connection",
+     "Run-up",
+     "System OK",
+     "Wind < start wind"
+    ]
+   },
+   "eventsInWindow": 452
+  },
+  {
+   "id": "KEL-02",
+   "farm": "Kelmarsh",
+   "unit": "2",
+   "model": "Senvion MM92 \u00b7 2.05 MW",
+   "severity": "clear",
+   "confidence": 0.06,
+   "flagDay": null,
+   "sinceDays": null,
+   "confidenceAtFlag": null,
+   "alarmDays": 0,
+   "replayedFrom": null,
+   "signal": "live",
+   "marks": [
+    {
+     "kind": "outage",
+     "day": -31.15,
+     "hours": 8.18,
+     "message": "Manual stop - remote"
+    }
+   ],
+   "evidence": [],
+   "today": {
+    "lines": 0,
+    "alarms": 0,
+    "items": [],
+    "routine": 0,
+    "routineKinds": []
+   },
+   "eventsInWindow": 411
+  },
+  {
+   "id": "KEL-03",
+   "farm": "Kelmarsh",
+   "unit": "3",
+   "model": "Senvion MM92 \u00b7 2.05 MW",
+   "severity": "clear",
+   "confidence": 0.06,
+   "flagDay": null,
+   "sinceDays": null,
+   "confidenceAtFlag": null,
+   "alarmDays": 0,
+   "replayedFrom": null,
+   "signal": "live",
+   "marks": [],
+   "evidence": [],
+   "today": {
+    "lines": 0,
+    "alarms": 0,
+    "items": [],
+    "routine": 0,
+    "routineKinds": []
+   },
+   "eventsInWindow": 676
+  },
+  {
+   "id": "KEL-05",
+   "farm": "Kelmarsh",
+   "unit": "5",
+   "model": "Senvion MM92 \u00b7 2.05 MW",
+   "severity": "clear",
+   "confidence": 0.06,
+   "flagDay": null,
+   "sinceDays": null,
+   "confidenceAtFlag": null,
+   "alarmDays": 0,
+   "replayedFrom": null,
+   "signal": "live",
+   "marks": [],
+   "evidence": [],
+   "today": {
+    "lines": 16,
+    "alarms": 0,
+    "items": [
+     {
+      "time": "18:03",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "18:02",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "17:40",
+      "status": "Informational",
+      "message": "Brake program 50",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "14:50",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "14:50",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "14:34",
+      "status": "Informational",
+      "message": "Brake program 50",
+      "hours": 0.0,
+      "kind": "routine"
+     }
+    ],
+    "routine": 10,
+    "routineKinds": [
+     "Automatic start-up",
+     "Mains connection",
+     "Run-up",
+     "System OK",
+     "Wind < start wind"
+    ]
+   },
+   "eventsInWindow": 988
+  },
+  {
+   "id": "KEL-06",
+   "farm": "Kelmarsh",
+   "unit": "6",
+   "model": "Senvion MM92 \u00b7 2.05 MW",
+   "severity": "clear",
+   "confidence": 0.06,
+   "flagDay": null,
+   "sinceDays": null,
+   "confidenceAtFlag": null,
+   "alarmDays": 0,
+   "replayedFrom": null,
+   "signal": "live",
+   "marks": [],
+   "evidence": [],
+   "today": {
+    "lines": 32,
+    "alarms": 0,
+    "items": [
+     {
+      "time": "18:18",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "18:18",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "16:43",
+      "status": "Informational",
+      "message": "Brake program 50",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "16:22",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "16:21",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "16:14",
+      "status": "Informational",
+      "message": "Brake program 50",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "15:20",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "15:20",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     }
+    ],
+    "routine": 20,
+    "routineKinds": [
+     "Automatic start-up",
+     "Mains connection",
+     "Run-up",
+     "System OK",
+     "Wind < start wind"
+    ]
+   },
+   "eventsInWindow": 739
+  },
+  {
+   "id": "PEN-01",
+   "farm": "Penmanshiel",
+   "unit": "01",
+   "model": "Senvion MM82 \u00b7 2.05 MW",
+   "severity": "clear",
+   "confidence": 0.06,
+   "flagDay": null,
+   "sinceDays": null,
+   "confidenceAtFlag": null,
+   "alarmDays": 0,
+   "replayedFrom": null,
+   "signal": "live",
+   "marks": [
+    {
+     "kind": "service",
+     "day": -1.14,
+     "hours": 0.32,
+     "message": "Manual stop - on site"
+    }
+   ],
+   "evidence": [],
+   "today": {
+    "lines": 7,
+    "alarms": 0,
+    "items": [
+     {
+      "time": "02:48",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "02:48",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "02:39",
+      "status": "Informational",
+      "message": "Brake program 50",
+      "hours": 0.0,
+      "kind": "routine"
+     }
+    ],
+    "routine": 4,
+    "routineKinds": [
+     "Automatic start-up",
+     "Mains connection",
+     "Run-up",
+     "Wind < start wind"
+    ]
+   },
+   "eventsInWindow": 278
+  },
+  {
+   "id": "PEN-02",
+   "farm": "Penmanshiel",
+   "unit": "02",
+   "model": "Senvion MM82 \u00b7 2.05 MW",
+   "severity": "clear",
+   "confidence": 0.06,
+   "flagDay": null,
+   "sinceDays": null,
+   "confidenceAtFlag": null,
+   "alarmDays": 0,
+   "replayedFrom": null,
+   "signal": "live",
+   "marks": [
+    {
+     "kind": "service",
+     "day": -1.11,
+     "hours": 0.02,
+     "message": "Manual stop - on site"
+    }
+   ],
+   "evidence": [],
+   "today": {
+    "lines": 14,
+    "alarms": 0,
+    "items": [
+     {
+      "time": "03:03",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "03:02",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "02:56",
+      "status": "Informational",
+      "message": "Brake program 50",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "02:44",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "02:44",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "02:34",
+      "status": "Informational",
+      "message": "Brake program 50",
+      "hours": 0.0,
+      "kind": "routine"
+     }
+    ],
+    "routine": 8,
+    "routineKinds": [
+     "Automatic start-up",
+     "Mains connection",
+     "Run-up",
+     "Wind < start wind"
+    ]
+   },
+   "eventsInWindow": 241
+  },
+  {
+   "id": "PEN-04",
+   "farm": "Penmanshiel",
+   "unit": "04",
+   "model": "Senvion MM82 \u00b7 2.05 MW",
+   "severity": "clear",
+   "confidence": 0.06,
+   "flagDay": null,
+   "sinceDays": null,
+   "confidenceAtFlag": null,
+   "alarmDays": 0,
+   "replayedFrom": null,
+   "signal": "live",
+   "marks": [
+    {
+     "kind": "service",
+     "day": -9.14,
+     "hours": 1.12,
+     "message": "Manual stop - on site"
+    },
+    {
+     "kind": "service",
+     "day": -1.09,
+     "hours": 0.03,
+     "message": "Manual stop - on site"
+    }
+   ],
+   "evidence": [],
+   "today": {
+    "lines": 11,
+    "alarms": 0,
+    "items": [
+     {
+      "time": "06:41",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "06:40",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "06:38",
+      "status": "Informational",
+      "message": "System test 3",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "06:37",
+      "status": "Informational",
+      "message": "System test 2",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "06:37",
+      "status": "Informational",
+      "message": "System test 1",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "06:35",
+      "status": "Informational",
+      "message": "Bypass limit switches",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "06:33",
+      "status": "Informational",
+      "message": "Brake program 180",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "06:33",
+      "status": "Stop",
+      "message": "Battery test",
+      "hours": 0.03,
+      "kind": "routine"
+     }
+    ],
+    "routine": 3,
+    "routineKinds": [
+     "Automatic start-up",
+     "Mains connection",
+     "Run-up"
+    ]
+   },
+   "eventsInWindow": 291
+  },
+  {
+   "id": "PEN-05",
+   "farm": "Penmanshiel",
+   "unit": "05",
+   "model": "Senvion MM82 \u00b7 2.05 MW",
+   "severity": "clear",
+   "confidence": 0.06,
+   "flagDay": null,
+   "sinceDays": null,
+   "confidenceAtFlag": null,
+   "alarmDays": 0,
+   "replayedFrom": null,
+   "signal": "live",
+   "marks": [
+    {
+     "kind": "service",
+     "day": -9.08,
+     "hours": 1.05,
+     "message": "Manual stop - on site"
+    },
+    {
+     "kind": "service",
+     "day": -1.06,
+     "hours": 0.0,
+     "message": "Manual stop - on site"
+    }
+   ],
+   "evidence": [],
+   "today": {
+    "lines": 15,
+    "alarms": 0,
+    "items": [
+     {
+      "time": "02:45",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "02:44",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "02:40",
+      "status": "Informational",
+      "message": "Brake program 50",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "17:00",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "16:59",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "16:50",
+      "status": "Informational",
+      "message": "Brake program 50",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "12:02",
+      "status": "Warning",
+      "message": "Oil filter gear choked",
+      "hours": 191.05,
+      "kind": "routine"
+     }
+    ],
+    "routine": 8,
+    "routineKinds": [
+     "Automatic start-up",
+     "Mains connection",
+     "Run-up",
+     "Wind < start wind"
+    ]
+   },
+   "eventsInWindow": 358
+  },
+  {
+   "id": "PEN-06",
+   "farm": "Penmanshiel",
+   "unit": "06",
+   "model": "Senvion MM82 \u00b7 2.05 MW",
+   "severity": "clear",
+   "confidence": 0.06,
+   "flagDay": null,
+   "sinceDays": null,
+   "confidenceAtFlag": null,
+   "alarmDays": 0,
+   "replayedFrom": null,
+   "signal": "live",
+   "marks": [
+    {
+     "kind": "outage",
+     "day": -40.96,
+     "hours": 18.33,
+     "message": "Anemometer defect"
+    },
+    {
+     "kind": "service",
+     "day": -9.03,
+     "hours": 1.18,
+     "message": "Manual stop - on site"
+    },
+    {
+     "kind": "outage",
+     "day": -8.53,
+     "hours": 12.73,
+     "message": "Pitch current asymmetry"
+    },
+    {
+     "kind": "service",
+     "day": -8.0,
+     "hours": 2.25,
+     "message": "Manual stop - on site"
+    },
+    {
+     "kind": "outage",
+     "day": -7.91,
+     "hours": 121.22,
+     "message": "Charging circuit pitch"
+    },
+    {
+     "kind": "service",
+     "day": -2.85,
+     "hours": 0.17,
+     "message": "Manual stop - on site"
+    },
+    {
+     "kind": "service",
+     "day": -1.04,
+     "hours": 0.0,
+     "message": "Manual stop - on site"
+    }
+   ],
+   "evidence": [],
+   "today": {
+    "lines": 10,
+    "alarms": 0,
+    "items": [
+     {
+      "time": "11:22",
+      "status": "Warning",
+      "message": "Oil filter gear choked",
+      "hours": 842.13,
+      "kind": "routine"
+     },
+     {
+      "time": "11:22",
+      "status": "Warning",
+      "message": "Oil filter gear choked",
+      "hours": 842.13,
+      "kind": "routine"
+     },
+     {
+      "time": "02:50",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "02:49",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "02:45",
+      "status": "Informational",
+      "message": "Brake program 50",
+      "hours": 0.0,
+      "kind": "routine"
+     }
+    ],
+    "routine": 5,
+    "routineKinds": [
+     "Automatic start-up",
+     "Mains connection",
+     "Run-up",
+     "System OK",
+     "Wind < start wind"
+    ]
+   },
+   "eventsInWindow": 559
+  },
+  {
+   "id": "PEN-08",
+   "farm": "Penmanshiel",
+   "unit": "08",
+   "model": "Senvion MM82 \u00b7 2.05 MW",
+   "severity": "clear",
+   "confidence": 0.06,
+   "flagDay": null,
+   "sinceDays": null,
+   "confidenceAtFlag": null,
+   "alarmDays": 0,
+   "replayedFrom": null,
+   "signal": "live",
+   "marks": [
+    {
+     "kind": "service",
+     "day": -8.9,
+     "hours": 1.02,
+     "message": "Manual stop - on site"
+    },
+    {
+     "kind": "service",
+     "day": -0.92,
+     "hours": 0.0,
+     "message": "Manual stop - on site"
+    }
+   ],
+   "evidence": [],
+   "today": {
+    "lines": 48,
+    "alarms": 0,
+    "items": [
+     {
+      "time": "11:46",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "11:45",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "11:43",
+      "status": "Informational",
+      "message": "System test 3",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "11:43",
+      "status": "Informational",
+      "message": "System test 2",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "11:43",
+      "status": "Informational",
+      "message": "System test 1",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "11:41",
+      "status": "Informational",
+      "message": "Bypass limit switches",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "11:38",
+      "status": "Informational",
+      "message": "Brake program 180",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "11:38",
+      "status": "Stop",
+      "message": "Battery test",
+      "hours": 0.03,
+      "kind": "routine"
+     }
+    ],
+    "routine": 20,
+    "routineKinds": [
+     "Automatic start-up",
+     "Mains connection",
+     "Run-up",
+     "System OK"
+    ]
+   },
+   "eventsInWindow": 338
+  },
+  {
+   "id": "PEN-09",
+   "farm": "Penmanshiel",
+   "unit": "09",
+   "model": "Senvion MM82 \u00b7 2.05 MW",
+   "severity": "clear",
+   "confidence": 0.06,
+   "flagDay": null,
+   "sinceDays": null,
+   "confidenceAtFlag": null,
+   "alarmDays": 0,
+   "replayedFrom": null,
+   "signal": "live",
+   "marks": [
+    {
+     "kind": "service",
+     "day": -8.13,
+     "hours": 1.07,
+     "message": "Manual stop - on site"
+    }
+   ],
+   "evidence": [],
+   "today": {
+    "lines": 16,
+    "alarms": 0,
+    "items": [
+     {
+      "time": "03:57",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "03:56",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "03:52",
+      "status": "Informational",
+      "message": "Brake program 50",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "16:56",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "16:55",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "16:48",
+      "status": "Informational",
+      "message": "Brake program 50",
+      "hours": 0.0,
+      "kind": "routine"
+     }
+    ],
+    "routine": 10,
+    "routineKinds": [
+     "Automatic start-up",
+     "Mains connection",
+     "Run-up",
+     "System OK",
+     "Wind < start wind"
+    ]
+   },
+   "eventsInWindow": 356
+  },
+  {
+   "id": "PEN-10",
+   "farm": "Penmanshiel",
+   "unit": "10",
+   "model": "Senvion MM82 \u00b7 2.05 MW",
+   "severity": "clear",
+   "confidence": 0.06,
+   "flagDay": null,
+   "sinceDays": null,
+   "confidenceAtFlag": null,
+   "alarmDays": 0,
+   "replayedFrom": null,
+   "signal": "live",
+   "marks": [
+    {
+     "kind": "service",
+     "day": -8.07,
+     "hours": 1.15,
+     "message": "Manual stop - on site"
+    }
+   ],
+   "evidence": [],
+   "today": {
+    "lines": 8,
+    "alarms": 0,
+    "items": [
+     {
+      "time": "02:51",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "02:51",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "02:47",
+      "status": "Informational",
+      "message": "Brake program 50",
+      "hours": 0.0,
+      "kind": "routine"
+     }
+    ],
+    "routine": 5,
+    "routineKinds": [
+     "Automatic start-up",
+     "Mains connection",
+     "Run-up",
+     "System OK",
+     "Wind < start wind"
+    ]
+   },
+   "eventsInWindow": 373
+  },
+  {
+   "id": "PEN-11",
+   "farm": "Penmanshiel",
+   "unit": "11",
+   "model": "Senvion MM82 \u00b7 2.05 MW",
+   "severity": "clear",
+   "confidence": 0.06,
+   "flagDay": null,
+   "sinceDays": null,
+   "confidenceAtFlag": null,
+   "alarmDays": 0,
+   "replayedFrom": null,
+   "signal": "live",
+   "marks": [
+    {
+     "kind": "service",
+     "day": -8.0,
+     "hours": 1.1,
+     "message": "Manual stop - on site"
+    },
+    {
+     "kind": "service",
+     "day": -0.03,
+     "hours": 0.0,
+     "message": "Manual stop - on site"
+    }
+   ],
+   "evidence": [],
+   "today": {
+    "lines": 48,
+    "alarms": 0,
+    "items": [
+     {
+      "time": "11:37",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "11:37",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "11:35",
+      "status": "Informational",
+      "message": "Bypass limit switches",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "11:34",
+      "status": "Informational",
+      "message": "Brake program 60",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "11:34",
+      "status": "Stop",
+      "message": "Manual stop - on site",
+      "hours": 0.0,
+      "kind": "service"
+     },
+     {
+      "time": "11:32",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "11:32",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "11:29",
+      "status": "Informational",
+      "message": "Bypass limit switches",
+      "hours": 0.0,
+      "kind": "routine"
+     }
+    ],
+    "routine": 20,
+    "routineKinds": [
+     "Automatic start-up",
+     "Mains connection",
+     "Run-up",
+     "System OK"
+    ]
+   },
+   "eventsInWindow": 772
+  },
+  {
+   "id": "PEN-12",
+   "farm": "Penmanshiel",
+   "unit": "12",
+   "model": "Senvion MM82 \u00b7 2.05 MW",
+   "severity": "clear",
+   "confidence": 0.06,
+   "flagDay": null,
+   "sinceDays": null,
+   "confidenceAtFlag": null,
+   "alarmDays": 0,
+   "replayedFrom": null,
+   "signal": "live",
+   "marks": [
+    {
+     "kind": "service",
+     "day": -7.94,
+     "hours": 0.95,
+     "message": "Manual stop - on site"
+    },
+    {
+     "kind": "service",
+     "day": -0.11,
+     "hours": 0.15,
+     "message": "Manual stop - on site"
+    }
+   ],
+   "evidence": [],
+   "today": {
+    "lines": 39,
+    "alarms": 0,
+    "items": [
+     {
+      "time": "09:42",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "09:41",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "09:39",
+      "status": "Informational",
+      "message": "Bypass limit switches",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "09:38",
+      "status": "Informational",
+      "message": "Brake program 60",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "09:38",
+      "status": "Stop",
+      "message": "Manual stop - on site",
+      "hours": 0.0,
+      "kind": "service"
+     },
+     {
+      "time": "09:37",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "09:36",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "09:34",
+      "status": "Informational",
+      "message": "Bypass limit switches",
+      "hours": 0.0,
+      "kind": "routine"
+     }
+    ],
+    "routine": 14,
+    "routineKinds": [
+     "Automatic start-up",
+     "Mains connection",
+     "Run-up"
+    ]
+   },
+   "eventsInWindow": 573
+  },
+  {
+   "id": "PEN-13",
+   "farm": "Penmanshiel",
+   "unit": "13",
+   "model": "Senvion MM82 \u00b7 2.05 MW",
+   "severity": "clear",
+   "confidence": 0.06,
+   "flagDay": null,
+   "sinceDays": null,
+   "confidenceAtFlag": null,
+   "alarmDays": 0,
+   "replayedFrom": null,
+   "signal": "live",
+   "marks": [
+    {
+     "kind": "service",
+     "day": -7.15,
+     "hours": 1.1,
+     "message": "Manual stop - on site"
+    },
+    {
+     "kind": "service",
+     "day": -0.09,
+     "hours": 0.02,
+     "message": "Manual stop - on site"
+    }
+   ],
+   "evidence": [],
+   "today": {
+    "lines": 44,
+    "alarms": 0,
+    "items": [
+     {
+      "time": "10:10",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "10:10",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "10:07",
+      "status": "Informational",
+      "message": "Bypass limit switches",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "10:07",
+      "status": "Informational",
+      "message": "Brake program 60",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "10:07",
+      "status": "Stop",
+      "message": "Manual stop - on site",
+      "hours": 0.0,
+      "kind": "service"
+     },
+     {
+      "time": "10:05",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "10:05",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "10:02",
+      "status": "Informational",
+      "message": "Bypass limit switches",
+      "hours": 0.0,
+      "kind": "routine"
+     }
+    ],
+    "routine": 19,
+    "routineKinds": [
+     "Automatic start-up",
+     "Mains connection",
+     "Run-up",
+     "System OK"
+    ]
+   },
+   "eventsInWindow": 673
+  },
+  {
+   "id": "PEN-14",
+   "farm": "Penmanshiel",
+   "unit": "14",
+   "model": "Senvion MM82 \u00b7 2.05 MW",
+   "severity": "clear",
+   "confidence": 0.06,
+   "flagDay": null,
+   "sinceDays": null,
+   "confidenceAtFlag": null,
+   "alarmDays": 0,
+   "replayedFrom": null,
+   "signal": "live",
+   "marks": [
+    {
+     "kind": "service",
+     "day": -7.09,
+     "hours": 0.95,
+     "message": "Manual stop - on site"
+    },
+    {
+     "kind": "service",
+     "day": -0.07,
+     "hours": 0.0,
+     "message": "Manual stop - on site"
+    }
+   ],
+   "evidence": [],
+   "today": {
+    "lines": 36,
+    "alarms": 0,
+    "items": [
+     {
+      "time": "10:38",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "10:38",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "10:35",
+      "status": "Informational",
+      "message": "Bypass limit switches",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "10:35",
+      "status": "Informational",
+      "message": "Brake program 60",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "10:35",
+      "status": "Stop",
+      "message": "Manual stop - on site",
+      "hours": 0.0,
+      "kind": "service"
+     },
+     {
+      "time": "10:33",
+      "status": "Informational",
+      "message": "Mains operation",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "10:33",
+      "status": "Informational",
+      "message": "Mains run-up",
+      "hours": 0.0,
+      "kind": "routine"
+     },
+     {
+      "time": "10:31",
+      "status": "Informational",
+      "message": "Bypass limit switches",
+      "hours": 0.0,
+      "kind": "routine"
+     }
+    ],
+    "routine": 16,
+    "routineKinds": [
+     "Automatic start-up",
+     "Mains connection",
+     "Run-up",
+     "System OK"
+    ]
+   },
+   "eventsInWindow": 787
+  }
+ ]
+}

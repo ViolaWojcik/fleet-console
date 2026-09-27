@@ -1,0 +1,16 @@
+/* Tokens first: theme.css is generated from the Figma variables (never edited by hand). */
+@import "../theme.css";
+@import "./shadcn.css";
+@import "./console.css";
+
+html, body, #root { min-height: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: 1.4;
+  color: var(--color-text-primary);
+  background: var(--color-surface-base);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}

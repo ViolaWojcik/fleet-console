@@ -1,0 +1,26 @@
+/* shadcn/ui primitives (Button, Input, Radio, Textarea) re-bound to the console tokens.
+   The kit's own palette is not loaded: every semantic name it expects is an alias of a
+   Figma variable from theme.css, exactly as the Figma kit's primitives were re-bound. */
+@import "tw-animate-css";
+@custom-variant dark (&:is([data-mode="dark"] *));
+
+@theme inline {
+  --color-background: var(--color-surface-raised);
+  --color-foreground: var(--color-text-primary);
+  --color-card: var(--color-surface-raised);
+  --color-card-foreground: var(--color-text-primary);
+  --color-popover: var(--color-surface-raised);
+  --color-popover-foreground: var(--color-text-primary);
+  --color-primary: var(--color-text-primary);
+  --color-primary-foreground: var(--color-surface-raised);
+  --color-secondary: var(--color-surface-overlay);
+  --color-secondary-foreground: var(--color-text-primary);
+  --color-muted: var(--color-surface-overlay);
+  --color-muted-foreground: var(--color-text-secondary);
+  --color-accent: var(--color-surface-overlay);
+  --color-accent-foreground: var(--color-text-primary);
+  --color-destructive: var(--color-severity-stop);
+  --color-border: var(--color-border-hair);
+  --color-input: var(--color-border-strong);
+  --color-ring: var(--color-border-focus);
+}
