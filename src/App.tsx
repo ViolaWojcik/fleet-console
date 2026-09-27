@@ -82,6 +82,10 @@ export default function App() {
           )}
           {fleet.base.outages} of {fleet.base.episodes} alarm episodes ended in an outage within that window; median warning {fleet.base.medianDays} days.
           {replayed.length > 0 && <> {replayed.map(t => t.id).join(', ')} replays its {replayed.map(t => t.replayedFrom!.slice(0, 7)).join(', ')} episode on this clock.</>}
+          {decisions.list.length > 0 && (
+            <> {decisions.list.length} decision{decisions.list.length === 1 ? '' : 's'} recorded in this browser ·{' '}
+            <button type="button" className="link" onClick={() => { if (window.confirm('Clear every recorded decision in this browser?')) decisions.reset() }}>Reset demo</button></>
+          )}
         </p>
       </>
     )
