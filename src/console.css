@@ -108,6 +108,8 @@
 .lane__cell--severity { width: var(--layout-lane-col-severity); font-family: var(--font-sans); }
 .lane__cell--confidence { width: var(--layout-lane-col-confidence); }
 .lane__cell--since { width: var(--layout-lane-col-since); }
+.lane__cell--median { width: var(--layout-lane-col-median); font-style: italic; }   /* a judgment next to facts */
+.lane__cell--late { font-weight: 500; }
 .lane__none { color: var(--color-text-muted); }
 
 .lane__strip { position: relative; flex: 1; overflow: hidden; }

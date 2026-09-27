@@ -16,10 +16,10 @@ interface Props {
 export function Lane({ turbine: t, windowDays, medianDays, selected, onSelect }: Props) {
   const pct = (day: number) => `${((day + windowDays) / windowDays) * 100}%`
   const flag = t.flagDay
-  const bandEnd = flag !== null ? Math.min(0, flag + windowDays) : 0
-  const median = flag !== null ? flag + medianDays : null
-  const medianIn = median !== null && median <= 0
-  const medianDue = median !== null && median > 0 ? Math.round(median) : null
+  // the counted median, as a judgment next to facts: "in 15 d" while the median lead time is still
+  // ahead, "10 d late" once the flag has outlived it without an outage
+  const due = flag !== null ? flag + medianDays : null
+  const median = due === null ? null : due > 0 ? { text: `in ${Math.round(due)} d`, late: false } : { text: `${Math.round(-due)} d late`, late: true }
 
   return (
     <div
@@ -38,25 +38,18 @@ export function Lane({ turbine: t, windowDays, medianDays, selected, onSelect }:
         <span className="lane__cell lane__cell--since" role="cell">
           {t.sinceDays !== null ? `${t.sinceDays} d` : <span className="lane__none" aria-label="no flag">–</span>}
         </span>
+        <span className={`lane__cell lane__cell--median${median?.late ? ' lane__cell--late' : ''}`} role="cell"
+          title={median ? `counted median warning: ${medianDays} d from the flag` : undefined}>
+          {median ? median.text : <span className="lane__none">–</span>}
+        </span>
       </div>
       <div className="lane__strip" role="cell" aria-label={`${t.marks.length} events in ${windowDays} days`}>
        <div className="lane__scale">
         {Array.from({ length: windowDays / 7 - 1 }, (_, i) => (
           <i key={i} className="lane__week" style={{ left: pct(-windowDays + (i + 1) * 7) }} />
         ))}
-        {flag !== null && (
-          <>
-            <i className="lane__band" style={{ left: pct(Math.max(flag, -windowDays)), width: `calc(${pct(bandEnd)} - ${pct(Math.max(flag, -windowDays))})` }} />
-            {flag >= -windowDays && <i className="lane-mark lane-mark--flag" style={{ left: pct(flag) }} title={`flagged ${t.sinceDays} d ago`} />}
-            {medianIn && (
-              <i className="lane-mark lane-mark--median" style={{ left: pct(median!) }}>
-                <span className="lane-mark__label">median {medianDays} d</span>
-              </i>
-            )}
-            {medianDue !== null && (
-              <span className="lane__due" title="median lead time from flag to outage, counted on the fleet">median outage in {medianDue} d</span>
-            )}
-          </>
+        {flag !== null && flag >= -windowDays && (
+          <i className="lane-mark lane-mark--flag" style={{ left: pct(flag) }} title={`flagged ${t.sinceDays} d ago`} />
         )}
         {t.marks.map((m, i) => {
           if (m.kind === 'outage') {

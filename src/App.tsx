@@ -74,7 +74,8 @@ export default function App() {
         <p className="console__legend">
           {view === 'lanes' ? (
             <>Each lane is one turbine over the last {fleet.windowDays} days: ticks are metal-particle alarms, a ring is a service visit,
-            a block is a forced outage, the full line is the model's flag and the shaded band its six-week projection. </>
+            a block is a forced outage, the full line is the model's flag. Median is the counted median warning ({fleet.base.medianDays} days
+            from the flag), in italic because it is a judgment next to readings. </>
           ) : (
             <>Table view: the same row at any density, sorted by severity. Median is the counted median warning ({fleet.base.medianDays} days
             from the flag), in italic because it is a judgment next to readings; the trend column is the six-week particle rate against the alarm threshold. </>

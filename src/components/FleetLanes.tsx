@@ -23,6 +23,7 @@ export function FleetLanes({ fleet, selected, onSelect, panel }: Props) {
           <ColumnHeader label="Severity" width="var(--layout-lane-col-severity)" />
           <ColumnHeader label="Confidence" width="var(--layout-lane-col-confidence)" />
           <ColumnHeader label="Since" width="var(--layout-lane-col-since)" />
+          <ColumnHeader label="Median" width="var(--layout-lane-col-median)" />
         </div>
         <div className="lanes__axis-strip" role="columnheader" aria-label={`last ${w} days`}>
           <div className="lanes__axis-scale">
