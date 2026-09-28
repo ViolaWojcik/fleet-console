@@ -35,6 +35,9 @@
 .querybar__input:focus { outline: none; }
 .querybar:focus-within { border-color: var(--color-border-focus); }
 .querybar__kbd { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-text-secondary); }
+/* narrow laptops: the query bar gives way first, then the controls wrap; the count never clips */
+.toolbar__controls { flex-wrap: wrap; row-gap: var(--spacing-8); }
+.querybar { flex: 1 1 240px; min-width: 220px; }
 .querybar__intent { margin: var(--spacing-8) 0 0; font-family: var(--font-display); font-style: italic; font-size: var(--text-body); color: var(--color-text-secondary); }
 
 .segmented { display: flex; padding: 3px; gap: 2px; border: 1px solid var(--color-border-hair); border-radius: var(--radius-full); background: var(--color-surface-raised); }
