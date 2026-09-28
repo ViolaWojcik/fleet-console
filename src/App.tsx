@@ -120,13 +120,13 @@ export default function App() {
         <p className="console__legend">
           {view === 'lanes' ? (
             <>Each lane is one turbine over the last {fleet.windowDays} days: ticks are metal-particle alarms, a ring is a service visit,
-            a block is a forced outage, the full line is the model's flag. Median is the counted median warning ({fleet.base.medianDays} days
-            from the flag), in italic because it is a judgment next to readings. </>
+            a block is a forced outage, the full line is the model's flag. Median is the counted median warning ({fleet.base.medianExactDays} days
+            from the flag, {fleet.base.medianDays} in whole days), in italic because it is a judgment next to readings. </>
           ) : (
-            <>Table view: the same row at any density, sorted by severity. Median is the counted median warning ({fleet.base.medianDays} days
-            from the flag), in italic because it is a judgment next to readings; the trend column is the six-week particle rate against the alarm threshold. </>
+            <>Table view: the same row at any density, sorted by severity. Median is the counted median warning ({fleet.base.medianExactDays} days
+            from the flag, {fleet.base.medianDays} in whole days), in italic because it is a judgment next to readings; the trend column is the six-week particle rate against the alarm threshold. </>
           )}
-          {fleet.base.outages} of {fleet.base.episodes} alarm episodes ended in an outage within that window; median warning {fleet.base.medianDays} days.
+          {fleet.base.outages} of {fleet.base.episodes} alarm episodes ended in an outage within that window; median warning {fleet.base.medianExactDays} days.
           {replayed.length > 0 && <> {replayed.map(t => t.id).join(', ')} replays its {replayed.map(t => t.replayedFrom!.slice(0, 7)).join(', ')} episode on this clock.</>}
           {decisions.list.length > 0 && (
             <> {decisions.list.length} decision{decisions.list.length === 1 ? '' : 's'} recorded in this browser ·{' '}

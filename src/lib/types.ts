@@ -50,7 +50,10 @@ export interface Turbine {
 export interface Fleet {
   clock: string
   windowDays: number
-  base: { episodes: number; outages: number; turbines: number; medianDays: number; since: string }
+  base: { episodes: number; outages: number; turbines: number; medianDays: number
+  /** the textbook median of the 22 lead times (18.5); medianDays is it rounded for whole-day arithmetic */
+  medianExactDays: number
+  medianNote: string; since: string }
   scoring: string
   source: string
   turbines: Turbine[]

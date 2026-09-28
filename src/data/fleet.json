@@ -5,7 +5,9 @@
   "episodes": 51,
   "outages": 22,
   "turbines": 11,
-  "medianDays": 21,
+  "medianDays": 19,
+  "medianExactDays": 18.5,
+  "medianNote": "median of 22 lead times = 18.5 d (middle values 16 and 21), rounded to 19 for whole-day arithmetic",
   "since": "2016"
  },
  "scoring": "confidence = 0.06 + 0.11 per day with a particle alarm (max five days) + 0.09 if alarms on two or more days (the counted pattern) + 0.05 if another drivetrain stop is in the window - 0.07 if a service visit was within 14 days - 0.12 if the particle sensor reported its own defect. Severity: stop = a drivetrain outage or on-site stop open in the last 3 days; act = alarms on three or more days; watch = one or two; clear = none.",

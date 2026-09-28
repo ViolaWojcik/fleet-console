@@ -10,7 +10,7 @@ export function BasisSentence({ basis, base, alarmDays }:
       <p className="basis">
         <em className="basis__kicker">Counted on the fleet's own history</em>
         Counted, not estimated: {base.episodes} metal-particle episodes on {base.turbines} turbines since {base.since}.
-        {' '}{base.outages} ended in a drivetrain outage within six weeks. Median warning {base.medianDays} days.
+        {' '}{base.outages} ended in a drivetrain outage within six weeks. Median warning about three weeks ({base.medianExactDays} days).
       </p>
     )
   }

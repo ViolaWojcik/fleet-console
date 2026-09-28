@@ -39,7 +39,7 @@ export function Lane({ turbine: t, windowDays, medianDays, selected, onSelect }:
           {t.sinceDays !== null ? `${t.sinceDays} d` : <span className="lane__none" aria-label="no flag">–</span>}
         </span>
         <span className={`lane__cell lane__cell--median${median?.late ? ' lane__cell--late' : ''}`} role="cell"
-          title={median ? `counted median warning: ${medianDays} d from the flag` : undefined}>
+          title={median ? `counted median warning: ${medianDays} d from the flag (18.5 d rounded)` : undefined}>
           {median ? median.text : <span className="lane__none">–</span>}
         </span>
       </div>
