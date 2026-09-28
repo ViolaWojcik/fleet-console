@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import fleetData from './data/fleet.json'
-import type { Fleet, View } from './lib/types'
+import type { Fleet, Mode, View } from './lib/types'
 import { usePrefs } from './lib/usePrefs'
 import { hhmm, sunTimes } from './lib/sun'
 import { useRoute, go } from './lib/router'
@@ -26,8 +26,53 @@ export default function App() {
   const decisions = useDecisions()
   const [view, setView] = useState<View>('lanes')
   const [selected, setSelected] = useState<string | null>(null)
+  const [query, setQuery] = useState('')
+
+  // Leaving the fleet screen drops the open panel, so coming back starts clean.
+  useEffect(() => { if (route.screen !== 'fleet') setSelected(null) }, [route.screen])
+
+  // "Ask the fleet": plain words matched against what the lanes already show, and the intent
+  // said back so the operator sees what the console understood.
+  const shown = useMemo(() => {
+    const words = query.toLowerCase().split(/[\s,]+/).filter(Boolean)
+    if (!words.length) return fleet.turbines
+    // words of one kind widen the match (stop act = either), kinds narrow it (Kelmarsh act = both)
+    const isSev = (w: string) => ['stop', 'act', 'watch', 'clear'].some(x => x.startsWith(w))
+    const isWhere = (w: string) => fleet.turbines.some(t => t.id.toLowerCase().includes(w) || t.farm.toLowerCase().includes(w))
+    const sev = words.filter(isSev), where = words.filter(w => !isSev(w) && isWhere(w)), flags = words.filter(w => !isSev(w) && !isWhere(w))
+    return fleet.turbines.filter(t =>
+      (!sev.length || sev.some(w => t.severity.startsWith(w))) &&
+      (!where.length || where.some(w => t.id.toLowerCase().includes(w) || t.farm.toLowerCase().includes(w))) &&
+      flags.every(w =>
+        (w === 'flagged' && t.sinceDays !== null) || (w === 'suspect' && t.signal === 'suspect') ||
+        (w === 'late' && t.flagDay !== null && t.flagDay + fleet.base.medianDays <= 0) ||
+        ((w === 'alarm' || w === 'alarms') && t.alarmDays > 0)))
+  }, [query])
+  const shownFleet: Fleet = shown === fleet.turbines ? fleet : { ...fleet, turbines: shown }
+  const intent = query.trim()
+    ? `${shown.length === fleet.turbines.length ? 'All' : shown.length} of ${fleet.turbines.length} turbines match “${query.trim()}”${shown.length ? '' : ': try a unit (KEL-04), a farm, a severity (stop, act, watch, clear), flagged, late, alarms or suspect'}`
+    : ''
   const { sunset } = sunTimes()
   const replayed = fleet.turbines.filter(t => t.replayedFrom)
+
+  // The mode the page shows lags the preference by one sunset: the sky sweeps once across the
+  // console and the surfaces crossfade under it. Reduced motion switches at once.
+  const [shownMode, setShownMode] = useState<Mode>(prefs.mode)
+  const [sweep, setSweep] = useState<'to-dark' | 'to-light' | null>(null)
+  const shownRef = useRef(shownMode)
+  useEffect(() => {
+    const target = prefs.mode
+    if (target === shownRef.current) return
+    const apply = () => { shownRef.current = target; setShownMode(target) }
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { apply(); return }
+    setSweep(target === 'dark' ? 'to-dark' : 'to-light')
+    document.documentElement.classList.add('mode-fading')
+    const flip = setTimeout(apply, 460)
+    const done = setTimeout(() => { setSweep(null); document.documentElement.classList.remove('mode-fading') }, 1150)
+    // a second change mid-sweep restarts the sweep; the surfaces are already on their way
+    return () => { clearTimeout(flip); clearTimeout(done); apply() }
+  }, [prefs.mode])
+  useEffect(() => { document.documentElement.dataset.mode = shownMode }, [shownMode])
 
   // ⌘K / Ctrl+K focuses the query bar, Escape closes the panel.
   useEffect(() => {
@@ -40,7 +85,7 @@ export default function App() {
   }, [])
 
   const meta = `${fleet.turbines.length} turbines · Kelmarsh + Penmanshiel · ${clockLabel(fleet.clock)}` +
-    (prefs.mode === 'dark' ? ` · night since sunset ${hhmm(sunset)}` : '')
+    (prefs.autoMode ? (prefs.mode === 'dark' ? ` · night since sunset ${hhmm(sunset)}` : ` · day until sunset ${hhmm(sunset)}`) : '')
 
   const turbineFor = (id: string) => fleet.turbines.find(t => t.id === id)
   const decide = (turbineId: string) => (d: { kind: 'sent' | 'watched' | 'disagreed'; reason?: Reason; note?: string }) =>
@@ -64,11 +109,12 @@ export default function App() {
       <>
         <FleetToolbar meta={meta} view={view} onView={setView} density={prefs.density} onDensity={prefs.setDensity}
           mode={prefs.mode} autoMode={prefs.autoMode} onPinMode={prefs.pinMode}
-          count={`${fleet.turbines.length} of ${fleet.turbines.length}`} />
+          query={query} onQuery={setQuery} intent={intent} handoverId={fleet.turbines[0].id}
+          count={`${shown.length} of ${fleet.turbines.length}`} />
         {view === 'lanes'
-          ? <FleetLanes fleet={fleet} selected={selected} onSelect={setSelected} panel={panel} />
+          ? <FleetLanes fleet={shownFleet} selected={selected} onSelect={setSelected} panel={panel} />
           : <>
-              <FleetTable fleet={fleet} selected={selected} onSelect={setSelected} />
+              <FleetTable fleet={shownFleet} selected={selected} onSelect={setSelected} />
               {panel && <div className="table__panel">{panel}</div>}
             </>}
         <p className="console__legend">
@@ -94,6 +140,7 @@ export default function App() {
   return (
     <div className={`page surface-metal page--${route.screen}`} data-density={prefs.density}>
       <main className="console">{body}</main>
+      {sweep && <div className={`sunset sunset--${sweep}`} aria-hidden="true" />}
       {route.screen !== 'fleet' && (
         <p className="console__legend console__legend--foot">
           <a className="link" href="#/">Fleet</a> · {clockLabel(fleet.clock)} · data: Cubico Sustainable Investments, CC-BY-4.0

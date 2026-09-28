@@ -9,6 +9,7 @@ import { EvidenceItem } from './EvidenceItem'
 import { ActionRow, type ActionState } from './ActionRow'
 import { HistoryEntry } from './HistoryEntry'
 import { DisagreeForm } from './DisagreeForm'
+import { useCopy } from '../lib/useCopy'
 
 interface Props {
   turbine: Turbine
@@ -30,6 +31,7 @@ export function EvidencePanel({ turbine: t, fleet, history, onDecide, onUndo, on
   const state = panelState(t)
   const [action, setAction] = useState<ActionState>({ state: 'idle' })
   const [formOpen, setFormOpen] = useState(false)
+  const copyLink = useCopy()
   const raises = t.evidence.filter(e => e.direction === 'raises')
   const lowers = t.evidence.filter(e => e.direction === 'lowers')
   const auto = autoEntry(t, fleet.clock)
@@ -96,8 +98,7 @@ export function EvidencePanel({ turbine: t, fleet, history, onDecide, onUndo, on
           {formOpen && <DisagreeForm turbineId={t.id} onConfirm={confirmDisagree} onCancel={() => setFormOpen(false)} />}
         </div>
         <p className="evidence-panel__links">
-          <a className="link" href="#note">Add note</a> · <a className="link" href="#mention">@ colleague</a> ·{' '}
-          <a className="link" href={href({ screen: 'history', id: t.id })}>Copy link</a> ·{' '}
+          <button type="button" className="link" onClick={() => copyLink.copy(`${window.location.origin}${window.location.pathname}${href({ screen: 'history', id: t.id })}`)}>{copyLink.copied ? 'Link copied' : 'Copy link'}</button> ·{' '}
           <a className="link" href={href({ screen: 'turbine', id: t.id })}>Open turbine</a>
         </p>
         {last && <ul className="history history--last"><HistoryEntry d={last} /></ul>}

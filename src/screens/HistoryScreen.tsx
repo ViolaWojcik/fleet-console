@@ -4,6 +4,7 @@ import type { Decision } from '../lib/decisions'
 import { autoEntry, NEXT_OPERATOR, OPERATOR, REASON_LABEL } from '../lib/decisions'
 import { href } from '../lib/router'
 import { SeverityTag } from '../components/SeverityTag'
+import { useCopy } from '../lib/useCopy'
 import { HistoryEntry } from '../components/HistoryEntry'
 
 interface Props { turbine: Turbine; fleet: Fleet; history: Decision[]; all: Decision[] }
@@ -38,15 +39,24 @@ export function ShiftHandover({ all, fleet }: { all: Decision[]; fleet: Fleet })
         ? <p className="handover__sent">Sent {sent} · {NEXT_OPERATOR} confirmed</p>
         : <p className="handover__links">
             <button type="button" className="link" onClick={() => navigator.clipboard?.writeText(handoverSummary(all, fleet))}>Copy summary</button> ·{' '}
-            <button type="button" className="link" onClick={() => setSent(time())}>Send to {NEXT_OPERATOR}</button> ·{' '}
-            <a className="link" href="#edit">Edit</a>
+            <button type="button" className="link" onClick={() => setSent(time())}>Send to {NEXT_OPERATOR}</button>
           </p>}
     </section>
   )
 }
 
+/** The record leaves as a file: every decision on this flag, as the console stores it. */
+function exportHistory(id: string, entries: Decision[]) {
+  const blob = new Blob([JSON.stringify({ turbine: id, exported: new Date().toISOString(), decisions: entries }, null, 2)], { type: 'application/json' })
+  const url = URL.createObjectURL(blob)
+  const a = Object.assign(document.createElement('a'), { href: url, download: `fleet-console-${id}-history.json` })
+  a.click()
+  setTimeout(() => URL.revokeObjectURL(url), 1000)
+}
+
 /** History / PEN-15: every call on this flag, newest first, and the handover card beside it. */
 export function HistoryScreen({ turbine: t, fleet, history, all }: Props) {
+  const copyLink = useCopy()
   const auto = autoEntry(t, fleet.clock)
   const entries = [...history, ...(auto ? [auto] : [])]
   const outage = t.marks.filter(m => m.kind === 'outage').at(-1)
@@ -74,8 +84,8 @@ export function HistoryScreen({ turbine: t, fleet, history, all }: Props) {
           <ul className="history history--full">{entries.map(d => <HistoryEntry key={d.id} d={d} />)}</ul>
           <hr className="rule" />
           <p className="history__links">
-            <a className="link" href="#export">Export history</a> · <a className="link" href={href({ screen: 'history', id: t.id })}>Copy link</a> ·{' '}
-            <a className="link" href="#handover">Handover summary</a>
+            <button type="button" className="link" onClick={() => exportHistory(t.id, entries)}>Export history</button> ·{' '}
+            <button type="button" className="link" onClick={() => copyLink.copy(window.location.href)}>{copyLink.copied ? 'Link copied' : 'Copy link'}</button>
             {sentOrder && <> · <a className="link" href={href({ screen: 'order', id: t.id })}>Service order</a></>}
           </p>
         </section>

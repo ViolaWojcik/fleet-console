@@ -1,4 +1,8 @@
+import { useState } from 'react'
 import type { Density, Mode, View } from '../lib/types'
+import { href } from '../lib/router'
+import { useCopy } from '../lib/useCopy'
+import { dictate } from '../lib/dictate'
 
 interface Props {
   meta: string
@@ -10,6 +14,10 @@ interface Props {
   autoMode: boolean
   onPinMode: (m: Mode | null) => void
   count: string
+  query: string
+  onQuery: (q: string) => void
+  intent: string
+  handoverId: string
 }
 
 function Segmented<T extends string>({ label, value, options, onChange }:
@@ -28,36 +36,39 @@ function Segmented<T extends string>({ label, value, options, onChange }:
 }
 
 /** Data/FleetToolbar: title row and the control row (QueryBar, view, density, count). */
-export function FleetToolbar({ meta, view, onView, density, onDensity, mode, autoMode, onPinMode, count }: Props) {
+export function FleetToolbar({ meta, view, onView, density, onDensity, mode, autoMode, onPinMode, count, query, onQuery, intent, handoverId }: Props) {
+  const share = useCopy()
+  const [listening, setListening] = useState(false)
   return (
     <header className="toolbar">
       <div className="toolbar__title-row">
         <h1 className="toolbar__title">Fleet</h1>
         <span className="toolbar__meta">
           {meta}
-          {' · '}
-          <button type="button" className="link" onClick={() => onPinMode(mode === 'dark' ? 'light' : 'dark')}>
-            {mode === 'dark' ? 'switch to day' : 'switch to night'}
-          </button>
-          {!autoMode && <>{' · '}<button type="button" className="link" onClick={() => onPinMode(null)}>follow sunset</button></>}
         </span>
         <nav className="toolbar__links" aria-label="share">
-          <a className="link" href="#share">Share view</a>
-          <a className="link" href="#handover">Handover summary</a>
+          <button type="button" className="link" onClick={() => share.copy(window.location.href)}>{share.copied ? 'Link copied' : 'Share view'}</button>
+          <a className="link" href={href({ screen: 'history', id: handoverId })}>Handover summary</a>
         </nav>
       </div>
       <div className="toolbar__controls">
         <form className="querybar" role="search" onSubmit={e => e.preventDefault()}>
-          <input className="querybar__input" type="search" placeholder="Ask the fleet" aria-label="Ask the fleet" />
+          <input className="querybar__input" type="search" placeholder="Ask the fleet" aria-label="Ask the fleet"
+            value={query} onChange={e => onQuery(e.target.value)} onKeyDown={e => { if (e.key === 'Escape') { onQuery(''); (e.target as HTMLInputElement).blur() } }} />
           <kbd className="querybar__kbd">⌘ K</kbd>
-          <button type="button" className="link">Speak</button>
+          <button type="button" className="link" aria-pressed={listening}
+            onClick={() => dictate(setListening, text => onQuery(text))}>{listening ? 'Listening…' : 'Speak'}</button>
         </form>
         <Segmented<View> label="view" value={view} onChange={onView}
           options={[{ value: 'lanes', label: 'Lanes' }, { value: 'table', label: 'Table' }]} />
         <Segmented<Density> label="density" value={density} onChange={onDensity}
           options={[{ value: 'compact', label: 'Compact' }, { value: 'default', label: 'Default' }, { value: 'comfortable', label: 'Comfortable' }]} />
+        <Segmented<'light' | 'dark' | 'auto'> label="colour mode" value={autoMode ? 'auto' : mode}
+          onChange={v => onPinMode(v === 'auto' ? null : v)}
+          options={[{ value: 'light', label: 'Day' }, { value: 'dark', label: 'Night' }, { value: 'auto', label: 'Sunset' }]} />
         <span className="toolbar__count">{count}</span>
       </div>
+      {intent && <p className="querybar__intent" role="status">{intent}</p>}
     </header>
   )
 }

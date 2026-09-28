@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { dictate } from '../lib/dictate'
 import { Button } from '@/components/ui/button'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Textarea } from '@/components/ui/textarea'
@@ -36,16 +37,7 @@ export function DisagreeForm({ turbineId, onConfirm, onCancel }: Props) {
 
   // Dictation is a second way in, not a feature: the Web Speech API when the browser has it,
   // otherwise the microphone stays a visible promise and the field keeps working.
-  function speak() {
-    const SR = (window as unknown as { webkitSpeechRecognition?: new () => SpeechRecognitionLike }).webkitSpeechRecognition
-    if (!SR) { setListening(true); setTimeout(() => setListening(false), 1500); return }
-    const rec = new SR()
-    rec.lang = 'en-GB'
-    rec.onresult = (e) => { setNote(n => (n ? n + ' ' : '') + e.results[0][0].transcript); setListening(false) }
-    rec.onend = () => setListening(false)
-    setListening(true)
-    rec.start()
-  }
+  function speak() { dictate(setListening, text => setNote(n => (n ? n + ' ' : '') + text)) }
 
   const time = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })
 
@@ -100,12 +92,6 @@ export function DisagreeForm({ turbineId, onConfirm, onCancel }: Props) {
   )
 }
 
-interface SpeechRecognitionLike {
-  lang: string
-  onresult: ((e: { results: { [i: number]: { [j: number]: { transcript: string } } } }) => void) | null
-  onend: (() => void) | null
-  start: () => void
-}
 
 function MicIcon() {
   return (

@@ -35,6 +35,7 @@
 .querybar__input:focus { outline: none; }
 .querybar:focus-within { border-color: var(--color-border-focus); }
 .querybar__kbd { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--color-text-secondary); }
+.querybar__intent { margin: var(--spacing-8) 0 0; font-family: var(--font-display); font-style: italic; font-size: var(--text-body); color: var(--color-text-secondary); }
 
 .segmented { display: flex; padding: 3px; gap: 2px; border: 1px solid var(--color-border-hair); border-radius: var(--radius-full); background: var(--color-surface-raised); }
 .segmented__item {
@@ -183,7 +184,8 @@
 }
 @keyframes panel-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .evidence-panel { animation: none; } }
-.evidence-panel__close { position: absolute; top: var(--spacing-24); right: var(--spacing-32); }
+.evidence-panel__close { position: absolute; top: var(--spacing-24); right: var(--spacing-32); z-index: 3; }
+.evidence-panel__call > .evidence-panel__h { padding-right: 56px; }
 .evidence-panel__title { font-family: var(--font-display); font-weight: 400; font-size: var(--text-display); line-height: 1.15; margin: 0 0 var(--spacing-16); letter-spacing: -0.01em; }
 .evidence-panel__why { display: flex; flex-direction: column; gap: var(--spacing-20); }
 .evidence-panel__h { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 16px; margin: 0 0 var(--spacing-12); }
@@ -192,6 +194,29 @@
 .evidence-panel__call { display: flex; flex-direction: column; gap: var(--spacing-16); position: relative; }
 .evidence-panel__links { margin: 0; font-size: var(--text-body-sm); line-height: 1.8; color: var(--color-text-secondary); }
 .table__panel { margin-top: -1px; }
+
+/* Mode change: the sky sweeps across the console once, the sun sinking (or rising) with it,
+   and every surface crossfades underneath. Purely decorative, skipped for reduced motion. */
+.sunset { position: fixed; inset: 0; z-index: 60; pointer-events: none; overflow: hidden; }
+.sunset::before {
+  content: ''; position: absolute; left: 0; right: 0; height: 160vh; top: -160vh;
+  background:
+    radial-gradient(circle at 50% 42%, #ffd98a 0 5vh, rgba(255, 168, 96, 0.75) 6vh 14vh, rgba(255, 132, 70, 0.28) 15vh 34vh, transparent 40vh),
+    linear-gradient(to bottom, rgba(23, 24, 27, 0) 0%, rgba(255, 150, 80, 0.16) 30%, rgba(255, 110, 60, 0.28) 46%, rgba(23, 24, 27, 0.62) 68%, rgba(23, 24, 27, 0) 100%);
+  animation: sunset-sink 1100ms cubic-bezier(0.55, 0, 0.45, 1) both;
+}
+.sunset--to-light::before {
+  background:
+    radial-gradient(circle at 50% 58%, #fff4c2 0 5vh, rgba(255, 214, 140, 0.75) 6vh 14vh, rgba(255, 190, 120, 0.28) 15vh 34vh, transparent 40vh),
+    linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(255, 200, 120, 0.18) 30%, rgba(255, 225, 170, 0.34) 46%, rgba(255, 255, 255, 0.55) 68%, rgba(255, 255, 255, 0) 100%);
+  animation-name: sunset-rise;
+}
+@keyframes sunset-sink { from { transform: translateY(0); } to { transform: translateY(260vh); } }
+@keyframes sunset-rise { from { transform: translateY(260vh); } to { transform: translateY(0); } }
+html.mode-fading, html.mode-fading * {
+  transition: background-color 520ms ease, color 520ms ease, border-color 520ms ease, fill 520ms ease, stroke 520ms ease, box-shadow 520ms ease !important;
+}
+@media (prefers-reduced-motion: reduce) { .sunset { display: none; } }
 
 .basis { margin: 0; font-size: var(--text-body-sm); line-height: 1.5; color: var(--color-text-secondary); }
 .basis__kicker { display: block; font-family: var(--font-display); font-style: italic; font-size: 15px; color: var(--color-text-primary); margin-bottom: var(--spacing-6); }

@@ -30,10 +30,6 @@ export function usePrefs() {
 
   const mode: Mode = prefs.pinnedMode ?? (night ? 'dark' : 'light')
 
-  useEffect(() => {
-    document.documentElement.dataset.mode = mode
-  }, [mode])
-
   return {
     density: prefs.density,
     setDensity: (density: Density) => setPrefs(p => ({ ...p, density })),
